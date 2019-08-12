@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/1.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function oninput(elem) {
+                $(elem).eq(0).show();
+                $(elem).eq(1).hide();
+                $(elem).eq(2).hide();
+            }
+            $('#formname').focus(function () {
+                oninput('.alertname')
+            });
+            $('#formpassword').focus(function () {
+                oninput('.alertpassword')
+            });
+            var d = 0;
+            var check = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            function formtrue(elem, elem2) {
+                $(elem2).css({
+                    'color': 'green'
+                })
+                $(elem).css({
+                    "border-color": "green",
+                    "box-shadow": "green"
+                });
+                console.log(check)
+            }
+
+            function formfalse(elem, elem2) {
+                $(elem2).css({
+                    'color': 'red'
+                })
+                $(elem).css({
+                    "box-shadow": "red",
+                    "border-color": "red"
+
+                });
+                console.log(check)
+            }
+
+            function formAlltrue(elem, elem1, elem2, dem) {
+                formtrue(elem, elem2);
+                $(elem1).eq(0).hide();
+                $(elem1).eq(1).hide();
+                $(elem1).eq(2).hide();
+                check[dem] = 1;
+                console.log(check);
+            }
+
+            function formAllfalse1(elem, elem1, elem2, dem) {
+                $(elem1).eq(0).hide();
+                $(elem1).eq(1).hide();
+                $(elem1).eq(2).show();
+                formfalse(elem, elem2);
+                check[dem] = 0;
+                console.log(check);
+            }
+
+            function formAllfalse2(elem, elem1, elem2, dem) {
+                $(elem1).eq(0).hide();
+                $(elem1).eq(2).hide();
+                $(elem1).eq(1).show();
+                formfalse(elem, elem2);
+                check[dem] = 0;
+                console.log(check);
+            }
+
+            function resetform(elem, elem1, elem2) {
+                $(elem1).eq(0).hide();
+                $(elem1).eq(2).hide();
+                $(elem1).eq(1).hide();
+                $(elem2).css({
+                    'color': 'black'
+                })
+                $(elem).css({
+                    "box-shadow": "red",
+                    "border-color": "#ced4da"
+                });
+            }
+
+            function checkNameAndPassword(elem, elem1, elem2, minlength, maxlength, dem) {
+                if ($(elem).val().length < 1) {
+                    formAllfalse1(elem, elem1, elem2, dem);
+                } else if (($(elem).val().length < maxlength) && ($(elem).val().length > minlength)) {
+                    formAlltrue(elem, elem1, elem2, dem);
+                } else {
+                    formAllfalse2(elem, elem1, elem2, dem);
+                }
+            }
+
+            function checkveritypassword() {
+                if ($('#formveritypassword').val() == $('#formpassword').val()) {
+                    formAlltrue('#formveritypassword', '.alertveritypassword', '#textveritypassword',
+                        3);
+                } else if ($('#formveritypassword').val().length < 1) {
+                    formAllfalse1('#formveritypassword', '.alertveritypassword', '#textveritypassword',
+                        3);
+                } else {
+                    formAllfalse2('#formveritypassword', '.alertveritypassword', '#textveritypassword',
+                        3);
+                }
+            }
+
+            function checkgender() {
+                if ($('#formgender').val() == '0') {
+                    formAllfalse1('#formgender', '.alertgender', '#textgender', 4)
+                }
+                if ($('#formgender').val() == '1') {
+                    formAlltrue('#formgender', '.alertgender', '#textgender', 4);
+                }
+                if ($('#formgender').val() == '2') {
+                    formAlltrue('#formgender', '.alertgender', '#textgender', 4);
+                }
+                if ($('#formgender').val() == '3') {
+                    formAlltrue('#formgender', '.alertgender', '#textgender', 4);
+                }
+            }
+            function checkmail(){
+                var email = $('#formemail').val();
+                var aCong = email.indexOf('@');
+                var dauCham = email.lastIndexOf('.');
+                if (email == '') {
+                    formAllfalse1('#formemail', '.alertemail', '#textemail', 5);
+                } else {
+                    if ((aCong < 1) || (dauCham < aCong + 2) || (dauCham + 2 > email.length) || (email
+                            .length > dauCham + 5)) {
+                        formAllfalse2('#formemail', '.alertemail', '#textemail', 5);
+                    } else {
+                        formAlltrue('#formemail', '.alertemail', '#textemail', 5);
+                    }
+                }
+            }
+            function checknote(){
+                if ($('#formnote').val().length < 1) formAllfalse2('#formnote', '.alertnote',
+                    '#textnote', 7);
+                else formAlltrue('#formnote', '.alertnote', '#textnote', 7);
+            }
+            $('#formname').keyup(function () {
+                checkNameAndPassword('#formname', '.alertname', '#textname', 3, 13, 1);
+            });
+            $('#formname').blur(function () {
+                checkNameAndPassword('#formname', '.alertname', '#textname', 3, 13);
+            })
+            $('#formpassword').keyup(function () {
+                checkNameAndPassword('#formpassword', '.alertpassword', '#textpassword', 7, 17, 2);
+            });
+            $('#formpassword').blur(function () {
+                checkNameAndPassword('#formpassword', '.alertpassword', '#textpassword', 7, 17);
+            })
+            $('#formveritypassword').keyup(function () {
+                checkveritypassword();
+            })
+            $('#formgender').change(function () {
+                checkgender();
+            })
+            $('#formemail').keyup(function () {
+                checkmail();
+            })
+            $('#formnote').keyup(function () {
+                checknote();
+            })
+            $('#checkbox1:checkbox').change(function () {
+                if (this.checked) {
+                    formAlltrue('#formcheckbox1', '.alertcheckbox1', '#textcheckbox1', 8)
+                } else formAllfalse2('#formcheckbox1', '.alertcheckbox1', '#textcheckbox1', 8)
+            });
+
+            function checkinterest(name) {
+                $(name).change(function () {
+                    if (this.checked) {
+                        d = d + 1;
+                        formAlltrue('#forminterest', '.alertinterest', '.textinterest', 6)
+                    } else {
+                        d = d - 1;
+                        if (d < 1) formAllfalse2('#forminterest', '.alertinterest', '.textinterest', 6);
+                    }
+                })
+            }
+            checkinterest('#checkinterest1:checkbox');
+            checkinterest('#checkinterest2:checkbox');
+            checkinterest('#checkinterest3:checkbox');
+            function submitform(elem, elem1, elem2) {
+                i = 1;
+                if (check[i] != 1) {
+                    $('#formname').focus(function () {
+                        checkNameAndPassword('#formname', '.alertname', '#textname', 3, 13, 1);
+                    });
+                    return false;
+                } else i++;
+
+
+            }
+            $('#reset').click(function () {
+                resetform('#formname', '.alertname', '#textname');
+                resetform('#formpassword', '.alertpassword', '#textpassword');
+                resetform('#formveritypassword', '.alertveritypassword', '#textveritypassword');
+                resetform('#formgender', '.alertgender', '#textgender');
+                resetform('#formemail', '.alertemail', '#textemail');
+                resetform('#formnote', '.alertnote', '#textnote');
+                resetform('#formcheckbox1', '.alertcheckbox1', '#textcheckbox1');
+                resetform('#forminterest', '.alertinterest', '.textinterest');
+                var check = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+            })
+            $('#submit').click(function () {
+                if(check[1]==0) {
+                    $('#formname').focus();
+                    checkNameAndPassword('#formname', '.alertname', '#textname', 3, 13, 1);
+                } else
+                if(check[2]==0) {
+                    $('#formpassword').focus();
+                    checkNameAndPassword('#formpassword', '.alertpassword', '#textpassword', 7, 17, 2);
+                } else if (check[3]==0){
+                    $('#formveritypassword').focus();
+                    checkveritypassword();
+                } else if(check[4]==0){
+                    $('#formgender').focus();
+                    checkgender();
+                } else if (check[5]==0){
+                    $('#formemail').focus();
+                    checkmail();
+                } else if (check[6]==0){
+                    formAllfalse2('#forminterest', '.alertinterest', '.textinterest', 6);
+                } else if(check[7]==0){
+                    $('#formnote').focus();
+                    checknote();
+                } else if(check[8]==0)
+                {
+                    formAllfalse2('#formcheckbox1', '.alertcheckbox1', '#textcheckbox1', 8)
+                } else
+                 $('#submit').attr('type','submit')
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 30px">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-10 ">
+                <form>
+                    <div class="form-group">
+                        <label id="textname" class="" for="username"><b>Username</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <input id="formname" type="text" class="  form-control " name="username">
+                            </div>
+                            <div class="col">
+                                <p class="alertname" style="display: none">You can use letters, numbers and periods</p>
+                                <p class="alertname" style="display: none;color: red"> Please enter 3-12 digits,
+                                    letters, underscores </p>
+                                <p class="alertname" style="display: none ;color: red;">This field is required </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="textpassword" class=""><b>Password</b></label>
+                        <div class="row">
+                            <div class="col"> <input id="formpassword" type="password" class="form-control">
+                            </div>
+                            <div class="col">
+                                <p class="alertpassword" style="display:none">Please fill in at least eight characters
+                                </p>
+                                <p class="alertpassword" style="display: none;color: red"> Please enter a value between
+                                    8 and 16
+                                    characters long. </p>
+                                <p class="alertpassword" style="display: none ;color: red;">Password is required. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id='textveritypassword' class=""><b>Verity Password</b></label>
+                        <div class="row">
+                            <div class="col"> <input id='formveritypassword' type="password" class="form-control"
+                                    onkeyup=""> </div>
+                            <div class="col">
+                                <p class="alertveritypassword" style="display:none;color: red">Verify </p>
+                                <p class="alertveritypassword" style="display:none;color: red">Verify Password must be
+                                    equal to Password.
+                                </p>
+                                <p class="alertveritypassword" style="display: none ;color: red;">Password is required.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="textgender" class=""><b>Gender</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <select class="form-control" id="formgender">
+                                    <option value="0">select...</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <p class="alertgender" style="display: none;color: red">adad</p>
+                                <p class="alertgender" style="display: none;color: red">adasd</p>
+                                <p class="alertgender" style="display: none;color: red">This field is required.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="textemail" class="control-lable"><b>Email</b></label>
+                        <div class="row">
+                            <div class="col"><input id='formemail' type="email" class="form-control " name="email">
+                            </div>
+                            <div class="col">
+                                <p class="alertemail"> </p>
+                                <p class="alertemail" style="display:none ;color: red">Please enter a valid email
+                                    address.</p>
+                                <p class="alertemail" style="display:none ;color: red">This field is required.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="textinterest"><b>Interest</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <div class="flex">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkinterest1">
+                                        <label class="textinterest">sport</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkinterest2">
+                                        <label class="textinterest">movie</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkinterest3">
+                                        <label class="textinterest">game</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p class="alertinterest" style="display:none ;color: red">This field is required.</p>
+                                <p class="alertinterest" style="display:none ;color: red">This field is required.</p>
+                                <p class="alertinterest" style="display:none ;color: red">This field is required.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id='textnote' class="text"><b>Note</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <textarea id="formnote" class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="col">
+                                <p class="alertnote" style="display:none ;color: red">This field is required.</p>
+                                <p class="alertnote" style="display:none ;color: red">This field is required.</p>
+                                <p class="alertnote" style="display:none ;color: red">This field is required.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                                    <label class="form-check-label" id="textcheckbox1">I agree to the service
+                                        agreement.</label>
+                                </div>
+                                <div class="col">
+                                    <p class="alertcheckbox1" style="display:none ;color: red">This field is required.
+                                    </p>
+                                    <p class="alertcheckbox1" style="display:none ;color: red">This field is required.
+                                    </p>
+                                    <p class="alertcheckbox1" style="display:none ;color: red">This field is required.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="submit" type="button" class="btn btn-primary"
+                            style="background-color:#337ab7;border-color:#2e6da4">Submit</button>
+                        <button id="reset" type="reset" class="btn btn-default"
+                            style="background-color:#ffffff;border-color:#cccccc" onclick="resetform()">reset</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

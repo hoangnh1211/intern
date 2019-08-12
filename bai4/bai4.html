@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/bai4.css">
+    <link type="text/javascript" rel="stylesheet" href="js/bai4.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var d = 0;
+            var tong = 0;
+            var i = 0;
+            $('.new-todo').keypress(function (event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                var obj = $('.new-todo').val();
+                if (keycode == '13') {
+                    if (obj != '') {
+                        $('.main,.footer').show();
+                        $('.todo-list').append('<li class="" value="0">' +
+                            ' <div class="view">' +
+                            ' <input class="toggle ' + obj + i + '" type="checkbox">' +
+                            '<label>' + obj + '</label>' +
+                            '<button class="destroy" id="' + obj + i + '"></button>' +
+                            '</div>' +
+                            '<input class="edit" value="0">' +
+                            '</li>');
+                        $('.new-todo').val('');
+                        d = d + 1;
+                        tong = tong + 1;
+                        obj1 = '.' + obj + i;
+                        obj2 = '#' + obj + i;
+                        $('strong').text(d);
+                        $(obj1).change(checkboxx);
+                        $(obj2).click(destroyboxx);
+                        i = i + 1;
+                    }
+                }
+            })
+            $('.toggle-all').change(function () {
+                if (this.checked) {
+                    $('.toggle').prop('checked', true);
+                    d = 0;
+                    $('strong').text(d);
+                    $('.toggle').parents("li").addClass("completed");
+                    $('.toggle').parents('li').attr('value', '1');
+                    $('.clear-completed').show();
+                } else {
+                    $('.toggle').prop('checked', false);
+                    $('.toggle').parents("li").removeClass("completed");
+                    d = tong;
+                    $('strong').text(d);
+                    $('.toggle').parents('li').attr('value', '0');
+                    $('.clear-completed').hide();
+                }
+            })
+            $('#all').click(function () {
+                $('.todo-list').children('li').show();
+                $('#all').addClass('selected');
+                $('#active').removeClass('selected');
+                $('#completed').removeClass('selected');
+            })
+            $('#active').click(function () {
+                $('#all').removeClass('selected');
+                $('#active').addClass('selected');
+                $('#completed').removeClass('selected');
+                $('.todo-list').children('li[ value=0 ]').show();
+                $('.todo-list').children('li[ value=1 ]').hide();
+            })
+            $('#completed').click(function () {
+                $('#all').removeClass('selected');
+                $('#active').removeClass('selected');
+                $('#completed').addClass('selected');
+                $('.todo-list').children('li[ value=1 ]').show();
+                $('.todo-list').children('li[ value=0 ]').hide();
+            })
+
+            function destroyboxx() {
+                $(this).parents('li').remove();
+                if ($(this).siblings('.toggle').prop('checked') === false)
+                    d = d - 1;
+                $('strong').text(d);
+                tong = tong - 1;
+                if (d == 0)
+                    $('.main,.footer').hide();
+                if (d == tong)
+                    $('.clear-completed').hide();
+            }
+
+            function checkboxx() {
+                if (this.checked) {
+                    d = d - 1;
+                    $('strong').text(d);
+                    $(this).parents("li").addClass("completed");
+                    if (d == 0) $('.toggle-all').prop('checked', true);
+                    $(this).parents('li').attr('value', '1');
+                    $('.clear-completed').show();
+
+                } else {
+                    $(this).parents("li").removeClass("completed");
+                    d = d + 1;
+                    $('strong').text(d);
+                    if (d == tong) $('.clear-completed').hide();
+                    if (d > 0) $('.toggle-all').prop('checked', false);
+                    $(this).parents('li').attr('value', '0');
+                }
+            }
+            $('.clear-completed').click(function () {
+                $('.todo-list').children('li[ value=1 ]').remove();
+                tong = d;
+                $('.clear-completed').hide();
+                if (tong == 0) $('.toggle-all').prop('checked', false);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+            <input class="new-todo" placeholder="What needs to be done?" autofocus="">
+        </header>
+        <section class="main" style="display: none;">
+            <input class="toggle-all" id="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list"></ul>
+        </section>
+        <footer class="footer" style="display: none;">
+            <span class="todo-count"><strong>1</strong> item left</span>
+            <ul class="filters">
+                <li>
+                    <a class="" id="all" href="#/">All</a>
+                </li>
+                <li>
+                    <a href="#/active" id="active" class="">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed" id="completed" class="">Completed</a>
+                </li>
+            </ul>
+            <button class="clear-completed" style="display: none">Clear completed</button>
+        </footer>
+    </section>
+</body>
+
+</html>

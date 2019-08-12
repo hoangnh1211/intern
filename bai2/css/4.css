@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Objective-Regular;
+    src: url("D:/thuc tap/Obective/Objective_OTFObjective-Regular.otf") format("opentype");
+}
+.plans{ 
+    /* background-image:url("D:/thuc tap/anh/Vector11.png"); */
+    background-image:url("D:/thuc tap/anh/image2.png");
+    padding-bottom: 100px;
+    padding-top:30px;
+ 
+    margin-top: 30px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+ 
+ 
+}
+.plans1{
+    border: 1px solid #C2C2C2;
+    box-sizing: border-box;
+    border-radius: 16px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+.plans11{
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-family: Objective-Regular;
+    font-size: 12px; line-height: 14px;
+    
+}.plans14{
+    font-size: 18px;
+    font-family: Objective-Regular;
+    line-height: 32px;
+}
+.plans15{
+    
+    font-size: 14px;
+    line-height: 24px;
+    font-family: Objective-Regular;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.plans12{
+    font-size: 32px;
+    font-family: Objective-Regular;
+    line-height: 48px;
+    margin-top: 30px;
+}
+.plans16{
+    padding-top:10px;
+    padding-bottom: 10px;
+    font-size: 18px ;
+    font-family: Objective-Regular;
+    text-align: center;  
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 80%;
+    
+}
+.plans13{
+    font-size: 32px;
+    line-height: 48px;
+}

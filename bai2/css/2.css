@@ -1,0 +1,86 @@
+@font-face {
+    font-family: Objective-Regular;
+    src: url("D:/thuc tap/Obective/Objective_OTFObjective-Regular.otf") format("opentype");
+}
+.textcolumn{
+    
+    background: #FFFFFF;
+    padding-bottom: 80px;
+    padding-top:80px;
+   
+}
+.textcolumn1{
+   
+    background: #FFFFFF;
+    position: absolute;
+    border-radius: 8px;
+}
+.textcolumn11{
+    padding-left:15px;
+    text-align: left;
+    font-size: 24px;
+   
+    font-family: Objective-Regular;
+}
+.textcolumn12{
+    padding-left: 15px;
+    text-align: left;
+   
+    font-size: 16px;
+    font-family: Objective-Regular;
+}
+.textcolumn13{
+    padding-left: 15px;
+    text-align: left;
+    
+    padding-bottom:10px  ;
+    margin-bottom: 0px;
+    
+}
+.textcolumn131{
+    font-size: 14px;
+    color:grey;
+    height: 56px;
+   
+    padding-right: 50px;
+    font-family: Objective-Regular;
+}
+.text-color1{
+    color:  #333333;
+}
+.text-color2{
+    color:#5C5C5C;
+}
+.textcolumn2{
+    text-align: start;
+}
+.textcolumn21{
+    font-size: 54px;
+    font-family: Objective-Regular;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+}
+.textcolumn22{
+    font-size:26px;
+    color: #858585;
+    font-family: Objective-Regular;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+}
+.textcolumn23{
+    font-size: 24px;
+    font-family: Objective-Regular;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+}
+.textcolumn24{
+    font-size: 18px;
+    font-family: Objective-Regular;
+}
+.hia{
+    border: 1px solid grey;
+    text-align: left;
+    padding: 5px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    text-decoration: none;
+    font-family: font-family: Objective-Regular;
+    color: grey;
+}

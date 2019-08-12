@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="css/1.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    
+</head>
+
+<body>
+    <div class="container" style="margin-top: 30px">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-10">
+                <form id='form'>
+                    <div class="form-group">
+                        <label id="a1" class="text" for="username"><b>Username</b></label>
+                        <div id="" class="row">
+                            <div class="col"><input id="a11" onfocus="onInput('a1')" type="text" class="  form-control "
+                                    name="username" onkeyup="checkUsernameAndPassword('a1',4,14,1)"
+                                    onblur="checkUsernameAndPassword('a1',4,14,1)">
+                            </div>
+                            <div class="col">
+                                <p id="a12" style="display: none">You can use letters, numbers and periods</p>
+                                <p id="a13" style="display: none;color: red"> Please enter 3-12 digits, letters,
+                                    underscores </p>
+                                <p id="a14" style="display: none ;color: red;">This field is required </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="a2" class="text"><b>Password</b></label>
+                        <div class="row">
+                            <div class="col"><input id="a21" onfocus="onInput('a2')" type="password"
+                                    class="form-control" required onkeyup="checkUsernameAndPassword('a2',8,17,2)"
+                                    onblur="checkUsernameAndPassword('a2',8,17,2)">
+                            </div>
+                            <div class="col">
+                                <p id="a22" style="display:none">Please fill in at least eight characters</p>
+                                <p id="a23" style="display: none;color: red"> Please enter a value between 8 and 16
+                                    characters long. </p>
+                                <p id="a24" style="display: none ;color: red;">Password is required. </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label id='a3' class="text"><b>Verity Password</b></label>
+                        <div class="row">
+                            <div class="col"><input id='a31' type="password" class="form-control" required
+                                    onkeyup="checkVerityPassword()">
+                            </div>
+                            <div class="col">
+                                <p id="a33" style="display:none;color: red">Verify Password must be equal to Password.
+                                </p>
+                                <p id="a34" style="display: none ;color: red;">Password is required. </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label id="a4" class="text"><b>Gender</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <select class="form-control" id="a41" onchange="checkGender()" required>
+                                    <option value="0">select...</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <p id='a42' style="display:none;color: red">This field is required.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label id="a5" class="control-lable"><b>Email</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <input id='a51' type="email" class="form-control " name="email" required
+                                    onkeyup="checkEmail()">
+                            </div>
+                            <div class="col">
+                                <p id='a53' style="display:none ;color: red">Please enter a valid email address.</p>
+                                <p id='a54' style="display:none ;color: red">This field is required.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text" id="a60"><b>Interest</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <div class="flex">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id='a61'>
+                                        <label class="form-check-label" id="a62">sport</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id='a63'>
+                                        <label class="form-check-label" id="a64">movie</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id='a65'>
+                                        <label class="form-check-label" id='a66'>game</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p id='a67' style="display:none ;color: red">This field is required.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label id='a7' class="text"><b>Note</b></label>
+                        <div class="row">
+                            <div class="col">
+                                <textarea id="a71" class="form-control" rows="2" required
+                                    onkeyup="checkNote()"></textarea>
+                            </div>
+                            <div class="col">
+                                <p id='a72' style="display:none ;color: red">This field is required.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-check-input" type="checkbox" value="" id="a81" required>
+                                    <label class="form-check-label" id="a8">I agree to the service
+                                        agreement.</label>
+                                </div>
+                                <div class="col">
+                                    <p id='a82' style="display:none ;color: red">This field is required.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button id='a9' type="button" class="btn btn-primary"
+                            style="background-color:#337ab7;border-color:#2e6da4"
+                            onclick="checksubmit()">Submit</button>
+                        <button type="reset" class="btn btn-default"
+                            style="background-color:#ffffff;border-color:#cccccc" onclick="resetform()">reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var check = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+        function true1(name, dem) {
+            document.getElementById(name).style.color = 'green';
+            document.getElementById(name + '1').style.borderColor = 'green';
+            check[dem] = 1;
+            console.log(check)
+        }
+
+        function false1(name, dem) {
+            document.getElementById(name).style.color = 'red';
+            document.getElementById(name + '1').style.borderColor = 'red';
+            check[dem] = 0;
+            console.log(check)
+        }
+
+        function onInput(name) {
+            document.getElementById(name + '2').style.display = 'block';
+            document.getElementById(name + '3').style.display = 'none';
+            document.getElementById(name + '4').style.display = 'none';
+        }
+
+        function onWrong(name, dem) {
+            document.getElementById(name + '3').style.display = 'none';
+            if (document.getElementById(name + '2') != null)
+                document.getElementById(name + '2').style.display = 'none';
+            document.getElementById(name + '4').style.display = 'block';
+            false1(name, dem);
+        }
+
+        function tudatTen(name, dem) {
+            document.getElementById(name + '3').style.display = 'block';
+            if (document.getElementById(name + '2') != null)
+                document.getElementById(name + '2').style.display = 'none';
+            document.getElementById(name + '4').style.display = 'none';
+            false1(name, dem);
+        }
+
+        function trueWrong(name, dem) {
+            document.getElementById(name + '3').style.display = 'none';
+            if (document.getElementById(name + '2') != null)
+                document.getElementById(name + '2').style.display = 'none';
+            document.getElementById(name + '4').style.display = 'none';
+            true1(name, dem);
+        }
+
+        function checkUsernameAndPassword(name, a, b, dem) {
+            if (document.getElementById(name + '1').value.length < a) {
+                if (document.getElementById(name + '1').value.length < 1) onWrong(name, dem);
+                else tudatTen(name);
+            } else {
+                if (document.getElementById(name + '1').value.length < b) trueWrong(name, dem);
+                else tudatTen(name, dem);
+            }
+        }
+
+        function checkVerityPassword() {
+            if (document.getElementById('a31').value == document.getElementById('a21').value) trueWrong('a3', 3);
+            else {
+                if (document.getElementById('a31').value.length < 1)
+                    onWrong('a3', 3);
+                else tudatTen('a3', 3);
+            }
+        }
+
+        function hai3(dem) {
+            true1('a4', dem)
+            document.getElementById('a42').style.display = 'none';
+        }
+
+        function checkGender() {
+            {
+                var value = document.getElementById("a41").value;
+                if (value === '0') {
+                    false1('a4', 4)
+                    document.getElementById('a42').style.display = 'block';
+                }
+                if (value === '1') hai3(4);
+                if (value === '2') hai3(4);
+                if (value === '3') hai3(4);
+            }
+        }
+
+        function checkEmail() {
+            var email = document.getElementById('a51').value;
+            var aCong = email.indexOf('@');
+            var dauCham = email.lastIndexOf('.');
+            if (email == '') onWrong('a5', 5);
+            else {
+                if ((aCong < 1) || (dauCham < aCong + 2) || (dauCham + 2 > email.length) || (email.length > dauCham +
+                        5)) tudatTen('a5', 5);
+                else trueWrong('a5', 5)
+            }
+        }
+
+        function hai2(color, an, name, dem) {
+            document.getElementById(name + '2').style.display = an;
+            document.getElementById(name).style.color = color;
+            document.getElementById(name + '1').style.borderColor = color;
+        }
+        var d = 0;
+
+        function hai1(color, an) {
+            document.getElementById('a60').style.color = color;
+            document.getElementById('a62').style.color = color;
+            document.getElementById('a64').style.color = color;
+            document.getElementById('a66').style.color = color;
+            document.getElementById('a67').style.display = an;
+        }
+        for (i = 1; i <= 5; i = i + 2) {
+            document.getElementById('a6' + i).onclick = function (e) {
+                if (this.checked) {
+                    d = d + 1;
+                    if (d < 1) hai1('red', 'block');
+                    else {
+                        hai1('green', 'none');
+                        check[6] = 1;
+                    }
+                } else {
+                    d = d - 1;
+                    if (d < 1) hai1('red', 'block');
+                    else {
+                        hai1('green', 'none');
+                        check[6] = 1;
+                    }
+                }
+            };
+        }
+
+        function checkNote() {
+            if (document.getElementById('a71').value.length > 0) {
+                hai2('green', 'none', 'a7', 7);
+                check[7] = 1
+            } else hai2('red', 'block', 'a7');
+        }
+        document.getElementById('a81').onclick = function (e) {
+            if (this.checked) {
+                hai2('green', 'none', 'a8');
+                check[8] = 1
+            } else hai2('red', 'block', 'a8');
+        }
+
+        function checksubmit() {
+            i = 1;
+           
+                if (check[i] != 1) {
+                    document.getElementById('a' + i + '1').focus();
+                    return false;
+                } else i++;
+            if (i == 6)
+                if (check[i] != 1) hai1('red', 'block');
+            while (i <= 7)
+                if (check[i] != 1) {
+                    document.getElementById('a' + i + '1').focus();
+                    return false;
+                } else i++;
+            if (i == 8)
+                if (check[i] != 1) hai2('red', 'block', 'a8');
+           
+        }
+
+        function resetform() {
+            for (i = 1; i <= 7; i++)
+                if (i != 6) {
+                    document.getElementById('a' + i).style.color = 'black';
+                    document.getElementById('a' + i + '1').style.borderColor = '#ced4da';
+                    if (document.getElementById('a' + i + '2') != null) document.getElementById('a' + i + '2').style
+                        .display = 'none';
+                    if (document.getElementById('a' + i + '3') != null) document.getElementById('a' + i + '3').style
+                        .display = 'none';
+                    if (document.getElementById('a' + i + '4') != null) document.getElementById('a' + i + '4').style
+                        .display = 'none';
+                }
+            for (i = 0; i <= 6; i++) document.getElementById('a6' + i).style.color = 'black';
+            document.getElementById('a82').style.display = 'none';
+            document.getElementById('a8').style.color = 'black';
+        }
+    </script>
+</body>
+
+</html>

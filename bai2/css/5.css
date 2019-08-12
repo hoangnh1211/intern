@@ -1,0 +1,84 @@
+@font-face {
+    font-family: Objective-Regular;
+    src: url("D:/thuc tap/Obective/Objective_OTFObjective-Regular.otf") format("opentype");
+}
+.footer{
+    background-image:url("D:/thuc tap/anh/66599851_386332871991171_5032940173210419200_n.png") ;
+    padding-bottom: 120px;
+    padding-top:150px;
+   
+    margin-top: -1px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  
+}
+.footer1{
+    font-size: 12px;
+    color: #5C5C5C;
+    font-family: Objective-Regular;
+    line-height: 14px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+.footer2{
+    font-size: 14px;
+    line-height: 24px;
+    font-family: Objective-Regular;
+    letter-spacing: 0.25px;
+    color: #333333;
+}
+.footer3{
+    font-size: 32px;
+    line-height: 48px;
+    font-family: Objective-Regular;
+    letter-spacing: -1.25px;
+    color: #7C4DFF;
+    margin-bottom: 27px;
+}
+.flex{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 40px;
+}
+.flex>div{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: white;
+    margin-right: 37px;
+}
+.footer4{
+    width: 105%;
+    height: 64px;
+    background: #ffffff;
+    margin-right: 0px;
+}
+.footer42{
+    background: #333333;
+    border-radius: 4px;
+    padding-top: 6px;
+    text-align: center;  
+    font-size: 18px;
+    letter-spacing: -0.25px;
+    line-height: 32px;
+    color: white;
+    border: #333333;
+    border-left-color: #333333;
+    border-top-color: #333333
+}
+.footer43{
+    background: #7C4DFF;
+    border-radius: 4px;
+    padding-top: 6px;
+    text-align: center;  
+    font-size: 18px;
+    letter-spacing: -0.25px;
+    line-height: 32px;
+    color: white;
+    border: #7C4DFF;
+    border-left-color: #7C4DFF;
+    border-top-color: #7C4DFF;
+    width: 100%;
+    height: 100%;
+}

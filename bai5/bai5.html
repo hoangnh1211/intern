@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var txt;
+      $.ajax({
+        url: "https://jsonplaceholder.typicode.com/users",
+        success: function (result) {
+          txt = result;
+          for (var i = 0; i < txt.length; i++) {
+            $('#tbody').append('<tr > ' +
+              '<td >' + txt[i].id + '</td>' +
+              '<td>' + txt[i].name + '</td>' +
+              '<td>' + txt[i].username + '</td>' +
+              '<td>' + txt[i].email + '</td>' +
+              '<td>' + txt[i].address.street + '</td>' +
+              '<td>' + txt[i].phone + '</td>' +
+              '<td>' + txt[i].website + '</td>' +
+              '<td>' + txt[i].company.name + '</td>' +
+              '</tr>')
+          }
+        }
+      });
+    })
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <p style="font-size: 30px"><b> userinformation</b> </p>
+      </div>
+      <div class="col-9">
+        <a href="bai51.html"><i style="font-size: 30px "class="fas fa-plus-square" id="add" ></i></a>
+      </div>
+    </div>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">UserName</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Ưebsite</th>
+          <th scope="col">Company</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
