@@ -16,6 +16,6 @@
   "main": "abc1.js",
   "scripts": {
     "start": "node abc1.js",
-    "sever": "nodemon abc1.js"
+    "sever": "nodemon abc1.js",
   }
 }
